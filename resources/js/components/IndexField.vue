@@ -1,11 +1,11 @@
 <template>
-    <span class="w-full flex flex-wrap gap-1 max-w-sm">
+    <span class="tw-w-full tw-flex tw-flex-wrap tw-gap-1 tw-max-w-sm">
         <span
             v-for="(value, option) in availableOptions"
             :key="option"
             :title="value"
-            :class="`inline-block rounded-full w-2 h-2 ${
-                optionIsActive(option) ? 'bg-green-500' : 'bg-red-500'
+            :class="`tw-inline-block tw-rounded-full tw-w-2 tw-h-2 ${
+                optionIsActive(option) ? 'tw-bg-green-500' : 'tw-bg-red-500'
             }`"
         />
     </span>

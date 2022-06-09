@@ -5,7 +5,7 @@
         :show-help-text="showHelpText"
     >
         <template #field>
-            <div class="w-full grid grid-cols-2">
+            <div class="tw-w-full tw-grid tw-grid-cols-2">
                 <div
                     v-for="(label, option) in field.options"
                     :key="option"
@@ -15,13 +15,13 @@
                         :value="option"
                         :checked="isChecked(option)"
                         @input="toggleOption(option)"
-                        class="mr-2"
+                        class="tw-mr-2"
                     />
                     <label
                         :for="field.name"
                         v-text="label"
                         @click="toggleOption(option)"
-                        class="leading-tight"
+                        class="tw-leading-tight"
                     ></label>
                 </div>
             </div>

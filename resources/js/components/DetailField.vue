@@ -1,17 +1,17 @@
 <template>
     <PanelItem :index="index" :field="field">
-        <template #value class="text-90 flex">
-            <span class="w-full grid grid-cols-2">
+        <template #value class="tw-flex">
+            <span class="tw-w-full tw-grid tw-grid-cols-2">
                 <div
                     v-for="(label, option) in field.options"
                     :key="option"
-                    class="flex-auto"
+                    class="tw-flex-auto"
                 >
                     <span
-                        :class="`inline-block rounded-full w-2 h-2 mr-1 ${
+                        :class="`tw-inline-block tw-rounded-full tw-w-2 tw-h-2 tw-mr-1 ${
                             optionIsActive(option)
-                                ? 'bg-green-500'
-                                : 'bg-red-500'
+                                ? 'tw-bg-green-500'
+                                : 'tw-bg-red-500'
                         }`"
                     />
                     <span>{{ label }}</span>
