@@ -10,9 +10,16 @@
         "checkbox",
         "checkboxes"
     ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0"
+        "php": "^7.3|^8.0",
+        "laravel/nova": "^4.8"
     },
     "autoload": {
         "psr-4": {
