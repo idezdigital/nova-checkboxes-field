@@ -11,19 +11,19 @@
                         {{ group }}
                     </h3>
                     <div
-                        v-for="option in groupOptions"
-                        :key="option.value"
+                        v-for="(label, value) in groupOptions"
+                        :key="value"
                         class="tw-flex-auto"
                     >
                         <span
-                            :title="option.label"
+                            :title="label"
                             :class="`tw-inline-block tw-rounded-full tw-w-2 tw-h-2 ${
-                                optionIsActive(option.value)
+                                optionIsActive(value)
                                     ? 'tw-bg-green-500'
                                     : 'tw-bg-red-500'
                             }`"
                         />
-                        <span class="tw-ml-2">{{ option.label }}</span>
+                        <span class="tw-ml-2">{{ label }}</span>
                     </div>
                 </div>
             </div>

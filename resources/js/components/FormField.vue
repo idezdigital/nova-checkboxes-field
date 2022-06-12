@@ -15,19 +15,19 @@
                         {{ group }}
                     </h3>
                     <div
-                        v-for="option in groupOptions"
-                        :key="option.value"
+                        v-for="(label, value) in groupOptions"
+                        :key="value"
                         class="tw-flex tw-mb-2"
                     >
                         <checkbox
-                            :value="option.value"
-                            :checked="isChecked(option.value)"
-                            @input="toggleOption(option.value)"
+                            :value="value"
+                            :checked="isChecked(value)"
+                            @input="toggleOption(value)"
                         />
                         <label
                             :for="field.name"
-                            v-text="option.label"
-                            @click="toggleOption(option.value)"
+                            v-text="label"
+                            @click="toggleOption(value)"
                             class="tw-w-full tw-ml-2"
                         ></label>
                     </div>
