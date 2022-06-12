@@ -1,22 +1,48 @@
 <template>
     <PanelItem :index="index" :field="field">
-        <template #value class="tw-flex">
-            <span class="tw-w-full tw-grid tw-grid-cols-2">
+        <template #value>
+            <div class="tw-w-full tw-columns-2" v-if="field.withGroups">
                 <div
-                    v-for="(label, option) in field.options"
-                    :key="option"
+                    v-for="(groupOptions, group) in field.options"
+                    :key="group"
+                    class="tw-mb-4"
+                >
+                    <h3 class="tw-my-2 tw-text-lg tw-font-semibold">
+                        {{ group }}
+                    </h3>
+                    <div
+                        v-for="option in groupOptions"
+                        :key="option.value"
+                        class="tw-flex-auto"
+                    >
+                        <span
+                            :title="option.label"
+                            :class="`tw-inline-block tw-rounded-full tw-w-2 tw-h-2 ${
+                                optionIsActive(option.value)
+                                    ? 'tw-bg-green-500'
+                                    : 'tw-bg-red-500'
+                            }`"
+                        />
+                        <span class="tw-ml-2">{{ option.label }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tw-w-full tw-columns-2" v-else>
+                <div
+                    v-for="(label, value) in field.options"
+                    :key="value"
                     class="tw-flex-auto"
                 >
                     <span
                         :class="`tw-inline-block tw-rounded-full tw-w-2 tw-h-2 tw-mr-1 ${
-                            optionIsActive(option)
+                            optionIsActive(value)
                                 ? 'tw-bg-green-500'
                                 : 'tw-bg-red-500'
                         }`"
                     />
                     <span>{{ label }}</span>
                 </div>
-            </span>
+            </div>
         </template>
     </PanelItem>
 </template>
@@ -27,7 +53,15 @@ export default {
 
     methods: {
         optionIsActive(option) {
-            return this.field.value && this.field.value.includes(option);
+            if (!this.field.value) {
+                return false;
+            }
+
+            if (!this.field.withGroup) {
+                return this.field.value.includes(option);
+            }
+
+            return _.flatMap(this.field.value).includes(option);
         },
     },
 };

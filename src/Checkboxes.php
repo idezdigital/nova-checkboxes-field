@@ -22,6 +22,16 @@ class Checkboxes extends Field
     public $setValueCallback;
 
     /**
+     * Enable groups of checkboxes.
+     * 
+     * @return self
+     */
+    public function withGroups()
+    {
+        return $this->withMeta(['withGroups' => true]);
+    }
+
+    /**
      * Specify the available options
      *
      * @param  array  $options
@@ -71,7 +81,7 @@ class Checkboxes extends Field
             /**
              * Split checked options and remove unchecked options.
              */
-            if (! is_array($checkedOptions = $request[$requestAttribute])) {
+            if (!is_array($checkedOptions = $request[$requestAttribute])) {
                 $checkedOptions = collect(explode(',', $checkedOptions))
                     ->reject(fn ($name) => empty($name))
                     ->all();
